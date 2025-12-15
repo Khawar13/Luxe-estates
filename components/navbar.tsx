@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Sun, Moon, Home, Building, MapPin, Users, Phone } from "lucide-react"
+import { Menu, X, Home, Building, MapPin, Users, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -19,21 +18,14 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
 
   return (
     <>
@@ -87,33 +79,6 @@ export function Navbar() {
 
             {/* Actions */}
             <div className="flex items-center gap-4">
-              {/* Theme Toggle */}
-              <motion.button
-                onClick={toggleTheme}
-                className="relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Toggle theme"
-              >
-                <AnimatePresence mode="wait">
-                  {mounted && (
-                    <motion.div
-                      key={theme}
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -20, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {theme === "dark" ? (
-                        <Sun className="w-5 h-5 text-accent" />
-                      ) : (
-                        <Moon className="w-5 h-5 text-foreground" />
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-
               {/* Mobile Menu Button */}
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
