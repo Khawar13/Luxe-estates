@@ -67,7 +67,7 @@ export function HeroSection() {
       <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/placeholder.svg?height=1200&width=1920')" }}
+          style={{ backgroundImage: "url('/home-background.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
       </motion.div>
