@@ -63,8 +63,18 @@ export function AreaCard({ area, index, layout = "normal" }: AreaCardProps) {
         transformStyle: "preserve-3d",
         filter: `brightness(${brightness.get()})`,
       }}
-      className={`group relative ${isLarge ? "md:col-span-2 md:row-span-2" : ""}`}
+      className={`group relative overflow-visible rounded-3xl p-[2px] ${isLarge ? "md:col-span-2 md:row-span-2" : ""}`}
     >
+      {/* Rotating beam border - always visible */}
+      <span className="absolute inset-0 rounded-3xl overflow-hidden">
+        <span className="absolute inset-0 opacity-100">
+          <span className="absolute inset-[-100%] animate-beam-rotate">
+            <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_30deg,#c4a484_90deg,#f5e6d3_180deg,#d4a574_270deg,transparent_330deg,transparent_360deg)] blur-md" />
+            <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_40deg,#c4a484_100deg,#f5e6d3_180deg,#d4a574_260deg,transparent_320deg,transparent_360deg)] blur-sm" />
+          </span>
+        </span>
+      </span>
+
       <Link href={`/areas/${area.id}`}>
         <div
           className={`relative rounded-3xl overflow-hidden bg-card shadow-lg hover:shadow-2xl transition-shadow duration-500 ${isLarge ? "aspect-square md:aspect-[16/10]" : "aspect-[4/3]"}`}

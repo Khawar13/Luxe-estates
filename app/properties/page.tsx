@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer"
 import { PropertiesHeader } from "@/components/properties/properties-header"
 import { PropertyFilters } from "@/components/properties/property-filters"
 import { PropertiesGrid } from "@/components/properties/properties-grid"
+import { ParticleBackground } from "@/components/ui/particle-background"
 import { properties } from "@/lib/mock-data"
 
 interface FilterState {
@@ -63,14 +64,17 @@ export default function PropertiesPage() {
   }, [filters])
 
   return (
-    <main className="min-h-screen bg-background">
-      <Navbar />
-      <PropertiesHeader totalCount={properties.length} filteredCount={filteredProperties.length} />
-      <div className="container mx-auto px-6 pb-24">
-        <PropertyFilters onFilterChange={setFilters} />
-        <PropertiesGrid properties={filteredProperties} />
+    <main className="relative min-h-screen bg-background overflow-hidden">
+      <ParticleBackground />
+      <div className="relative z-10">
+        <Navbar />
+        <PropertiesHeader totalCount={properties.length} filteredCount={filteredProperties.length} />
+        <div className="container mx-auto px-6 pb-24">
+          <PropertyFilters onFilterChange={setFilters} />
+          <PropertiesGrid properties={filteredProperties} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </main>
   )
 }

@@ -87,7 +87,7 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <motion.div className="relative z-20 container mx-auto px-6 text-center" style={{ opacity }}>
+      <motion.div className="relative z-20 container mx-auto px-6 pt-32 md:pt-0 text-center" style={{ opacity }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -100,11 +100,10 @@ export function HeroSection() {
 
         <div ref={textRef} className="overflow-hidden">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight mb-6">
-            <span className="block">{splitText("Discover")}</span>
+            <span className="block">{splitText("Your Dream")}</span>
             <span className="block">
-              <GoldShimmerText>{splitText("Extraordinary")}</GoldShimmerText>
+              <GoldShimmerText>Home Awaits</GoldShimmerText>
             </span>
-            <span className="block">{splitText("Living")}</span>
           </h1>
         </div>
 

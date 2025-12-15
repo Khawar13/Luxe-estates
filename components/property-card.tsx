@@ -63,8 +63,18 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group relative"
+      className="group relative overflow-visible rounded-2xl p-[2px]"
     >
+      {/* Rotating beam border - always visible */}
+      <span className="absolute inset-0 rounded-2xl overflow-hidden">
+        <span className="absolute inset-0 opacity-100">
+          <span className="absolute inset-[-100%] animate-beam-rotate">
+            <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_30deg,#c4a484_90deg,#f5e6d3_180deg,#d4a574_270deg,transparent_330deg,transparent_360deg)] blur-md" />
+            <span className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_40deg,#c4a484_100deg,#f5e6d3_180deg,#d4a574_260deg,transparent_320deg,transparent_360deg)] blur-sm" />
+          </span>
+        </span>
+      </span>
+
       <Link href={`/properties/${property.id}`}>
         <div className="relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500">
           {/* Image Container */}
